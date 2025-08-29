@@ -1,0 +1,31 @@
+{
+  "name": "Cherry Context Plugin",
+  "version": "1.0.0",
+  "description": "智能上下文处理插件，支持向量检索、SQL查询和图数据库",
+  "author": "Cherry Context Team",
+  "main": "plugin.py",
+  "entry_function": "cherry_pipeline",
+  "trigger": "before_query",
+  "settings": {
+    "max_short_term_memory": 10,
+    "cache_expire_hours": 24,
+    "vector_search_k": 5,
+    "sql_search_limit": 5,
+    "graph_search_limit": 5,
+    "prompt_max_length": 4000,
+    "route_threshold": 0.1
+  },
+  "dependencies": [
+    "sentence-transformers>=2.2.2",
+    "faiss-cpu>=1.7.4",
+    "requests>=2.31.0",
+    "numpy>=1.24.0"
+  ],
+  "data_paths": {
+    "vector_db": "data/vector_db",
+    "sql_db": "data/config.db",
+    "graph_db": "data/graph_data.json",
+    "memory": "data/",
+    "cache": "data/cache"
+  }
+}

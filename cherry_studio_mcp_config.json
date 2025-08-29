@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "cherry-context-v2": {
+      "command": "python",
+      "args": ["/home/feliexw/Documents/Demo/AI/cherry_context_plugin/cherry_context_mcp_v2.py"],
+      "env": {}
+    }
+  }
+}

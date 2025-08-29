@@ -1,0 +1,435 @@
+{
+  "nodes": [
+    {
+      "id": "张三",
+      "label": "Person",
+      "properties": {
+        "职位": "产品经理"
+      }
+    },
+    {
+      "id": "李四",
+      "label": "Person",
+      "properties": {
+        "职位": "开发工程师"
+      }
+    },
+    {
+      "id": "项目A",
+      "label": "Project",
+      "properties": {
+        "状态": "进行中"
+      }
+    },
+    {
+      "id": "张三",
+      "label": "Person",
+      "properties": {
+        "职位": "产品经理",
+        "部门": "产品部"
+      }
+    },
+    {
+      "id": "李四",
+      "label": "Person",
+      "properties": {
+        "职位": "开发工程师",
+        "部门": "技术部"
+      }
+    },
+    {
+      "id": "王五",
+      "label": "Person",
+      "properties": {
+        "职位": "测试工程师",
+        "部门": "质量部"
+      }
+    },
+    {
+      "id": "赵六",
+      "label": "Person",
+      "properties": {
+        "职位": "UI设计师",
+        "部门": "设计部"
+      }
+    },
+    {
+      "id": "钱七",
+      "label": "Person",
+      "properties": {
+        "职位": "项目经理",
+        "部门": "项目部"
+      }
+    },
+    {
+      "id": "项目A",
+      "label": "Project",
+      "properties": {
+        "状态": "进行中",
+        "优先级": "高"
+      }
+    },
+    {
+      "id": "项目B",
+      "label": "Project",
+      "properties": {
+        "状态": "已完成",
+        "优先级": "中"
+      }
+    },
+    {
+      "id": "项目C",
+      "label": "Project",
+      "properties": {
+        "状态": "计划中",
+        "优先级": "低"
+      }
+    },
+    {
+      "id": "张三",
+      "label": "Person",
+      "properties": {
+        "职位": "产品经理",
+        "部门": "产品部"
+      }
+    },
+    {
+      "id": "李四",
+      "label": "Person",
+      "properties": {
+        "职位": "开发工程师",
+        "部门": "技术部"
+      }
+    },
+    {
+      "id": "王五",
+      "label": "Person",
+      "properties": {
+        "职位": "测试工程师",
+        "部门": "质量部"
+      }
+    },
+    {
+      "id": "赵六",
+      "label": "Person",
+      "properties": {
+        "职位": "UI设计师",
+        "部门": "设计部"
+      }
+    },
+    {
+      "id": "钱七",
+      "label": "Person",
+      "properties": {
+        "职位": "项目经理",
+        "部门": "项目部"
+      }
+    },
+    {
+      "id": "项目A",
+      "label": "Project",
+      "properties": {
+        "状态": "进行中",
+        "优先级": "高"
+      }
+    },
+    {
+      "id": "项目B",
+      "label": "Project",
+      "properties": {
+        "状态": "已完成",
+        "优先级": "中"
+      }
+    },
+    {
+      "id": "项目C",
+      "label": "Project",
+      "properties": {
+        "状态": "计划中",
+        "优先级": "低"
+      }
+    },
+    {
+      "id": "张三",
+      "label": "Person",
+      "properties": {
+        "职位": "产品经理",
+        "部门": "产品部"
+      }
+    },
+    {
+      "id": "李四",
+      "label": "Person",
+      "properties": {
+        "职位": "开发工程师",
+        "部门": "技术部"
+      }
+    },
+    {
+      "id": "王五",
+      "label": "Person",
+      "properties": {
+        "职位": "测试工程师",
+        "部门": "质量部"
+      }
+    },
+    {
+      "id": "赵六",
+      "label": "Person",
+      "properties": {
+        "职位": "UI设计师",
+        "部门": "设计部"
+      }
+    },
+    {
+      "id": "钱七",
+      "label": "Person",
+      "properties": {
+        "职位": "项目经理",
+        "部门": "项目部"
+      }
+    },
+    {
+      "id": "项目A",
+      "label": "Project",
+      "properties": {
+        "状态": "进行中",
+        "优先级": "高"
+      }
+    },
+    {
+      "id": "项目B",
+      "label": "Project",
+      "properties": {
+        "状态": "已完成",
+        "优先级": "中"
+      }
+    },
+    {
+      "id": "项目C",
+      "label": "Project",
+      "properties": {
+        "状态": "计划中",
+        "优先级": "低"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "from": "张三",
+      "to": "李四",
+      "type": "合作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "项目A",
+      "type": "负责",
+      "properties": {
+        "角色": "项目负责人"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "李四",
+      "type": "合作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "项目A",
+      "type": "负责",
+      "properties": {
+        "角色": "项目负责人"
+      }
+    },
+    {
+      "from": "李四",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "主要开发"
+      }
+    },
+    {
+      "from": "王五",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "测试负责人"
+      }
+    },
+    {
+      "from": "赵六",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "UI设计"
+      }
+    },
+    {
+      "from": "钱七",
+      "to": "项目B",
+      "type": "负责",
+      "properties": {
+        "角色": "项目经理"
+      }
+    },
+    {
+      "from": "李四",
+      "to": "王五",
+      "type": "协作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "钱七",
+      "type": "沟通",
+      "properties": {
+        "频率": "每周"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "李四",
+      "type": "合作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "项目A",
+      "type": "负责",
+      "properties": {
+        "角色": "项目负责人"
+      }
+    },
+    {
+      "from": "李四",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "主要开发"
+      }
+    },
+    {
+      "from": "王五",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "测试负责人"
+      }
+    },
+    {
+      "from": "赵六",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "UI设计"
+      }
+    },
+    {
+      "from": "钱七",
+      "to": "项目B",
+      "type": "负责",
+      "properties": {
+        "角色": "项目经理"
+      }
+    },
+    {
+      "from": "李四",
+      "to": "王五",
+      "type": "协作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "钱七",
+      "type": "沟通",
+      "properties": {
+        "频率": "每周"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "李四",
+      "type": "合作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "项目A",
+      "type": "负责",
+      "properties": {
+        "角色": "项目负责人"
+      }
+    },
+    {
+      "from": "李四",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "主要开发"
+      }
+    },
+    {
+      "from": "王五",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "测试负责人"
+      }
+    },
+    {
+      "from": "赵六",
+      "to": "项目A",
+      "type": "参与",
+      "properties": {
+        "角色": "UI设计"
+      }
+    },
+    {
+      "from": "钱七",
+      "to": "项目B",
+      "type": "负责",
+      "properties": {
+        "角色": "项目经理"
+      }
+    },
+    {
+      "from": "李四",
+      "to": "王五",
+      "type": "协作",
+      "properties": {
+        "项目": "项目A"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "钱七",
+      "type": "沟通",
+      "properties": {
+        "频率": "每周"
+      }
+    },
+    {
+      "from": "张三",
+      "to": "王五",
+      "type": "合作",
+      "properties": {
+        "项目": "项目B"
+      }
+    }
+  ]
+}
