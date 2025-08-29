@@ -9,15 +9,44 @@
 - **缓存机制**: 智能缓存，数据更新时自动失效
 - **MCP协议**: 完全兼容Model Context Protocol
 
-## 快速开始
+## 前置条件
 
-### 1. 安装依赖
+- Python 3.8+
+- Cherry Studio (支持MCP协议)
+- 8GB+ 内存推荐
 
+> 详细安装指南请参考 [INSTALL.md](INSTALL.md)  
+> 本地化部署请参考 [LOCAL_DEPLOYMENT.md](LOCAL_DEPLOYMENT.md)
+
+## 环境准备
+
+### 1. 克隆项目
+```bash
+git clone https://github.com/wXingHe/cherry_context_plugin.git
+cd cherry_context_plugin
+```
+
+### 2. 创建虚拟环境
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# 或
+venv\Scripts\activate     # Windows
+```
+
+### 3. 安装依赖
 ```bash
 pip install -r requirements_mcp.txt
 ```
 
-### 2. 配置Cherry Studio
+### 4. 初始化数据
+```bash
+python -c "from cherry_plugin.plugin import CherryContextPlugin; CherryContextPlugin()"
+```
+
+## 快速开始
+
+### 1. 配置Cherry Studio
 
 将以下配置添加到Cherry Studio的MCP设置中：
 
@@ -33,7 +62,7 @@ pip install -r requirements_mcp.txt
 }
 ```
 
-### 3. 使用插件
+### 2. 使用插件
 
 在Cherry Studio中使用 `@cherry-context-v2` 调用插件：
 

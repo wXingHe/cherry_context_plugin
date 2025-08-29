@@ -8,11 +8,25 @@ import pickle
 import os
 
 class VectorDB:
-    def __init__(self, model_name="sentence-transformers/all-MiniLM-L6-v2"):
-        self.model = SentenceTransformer(model_name)
+    def __init__(self, model_name=None):
+        # 优先使用中文优化模型
+        if model_name is None:
+            try:
+                self.model = SentenceTransformer("BAAI/bge-small-zh-v1.5")
+                self.dimension = 512
+            except:
+                try:
+                    self.model = SentenceTransformer("shibing624/text2vec-base-chinese")
+                    self.dimension = 768
+                except:
+                    self.model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+                    self.dimension = 384
+        else:
+            self.model = SentenceTransformer(model_name)
+            self.dimension = 384  # 默认维度
+        
         self.index = None
         self.documents = []
-        self.dimension = 384  # all-MiniLM-L6-v2的维度
         
     def add_documents(self, docs):
         """添加文档到向量数据库"""
