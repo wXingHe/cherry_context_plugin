@@ -69,9 +69,9 @@ class CherryContextPlugin:
         retrieved = []
         
         if route == "vdb":
-            # 向量检索
-            vdb_results = self.vector_db.search(user_question, k=3)
-            retrieved = [f"文档: {r['document']} (相似度: {r['score']:.3f})" 
+            # 向量检索（启用重排序）
+            vdb_results = self.vector_db.search(user_question, k=3, use_rerank=True)
+            retrieved = [f"文档: {r['document']} (分数: {r['score']:.3f}{'*' if r.get('reranked') else ''})" 
                         for r in vdb_results]
             
         elif route == "sql":

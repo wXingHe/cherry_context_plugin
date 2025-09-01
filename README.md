@@ -6,6 +6,7 @@
 
 - **多模态检索**: 支持向量数据库、SQL数据库、图数据库三种检索方式
 - **智能路由**: 自动识别查询类型并路由到最合适的数据源
+- **重排序优化**: BGE重排序提升向量检索精度，特别适合中文
 - **缓存机制**: 智能缓存，数据更新时自动失效
 - **MCP协议**: 完全兼容Model Context Protocol
 
@@ -107,6 +108,7 @@ cherry_context_plugin/
 - [Cherry Studio集成指南](CHERRY_STUDIO_INTEGRATION.md)
 - [MCP配置指南](CHERRY_STUDIO_MCP_GUIDE.md)
 - [使用说明](HOW_TO_USE.md)
+- [重排序优化](RERANKING.md)
 
 ## 许可证
 

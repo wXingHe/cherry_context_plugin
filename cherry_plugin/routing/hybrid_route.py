@@ -7,14 +7,13 @@ import json
 
 class HybridRouter:
     def __init__(self):
-        # 优先使用中文优化模型
+        # 优先使用中文优化模型（强制CPU）
+        import torch
+        device = 'cpu'  # 强制使用CPU
         try:
-            self.embed_model = SentenceTransformer("BAAI/bge-small-zh-v1.5")
+            self.embed_model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device=device)
         except:
-            try:
-                self.embed_model = SentenceTransformer("shibing624/text2vec-base-chinese")
-            except:
-                self.embed_model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
+            self.embed_model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", device=device)
         self.module_examples = {
             "vdb": ["查找文档内容", "历史对话查询", "笔记检索", "搜索相关资料", "Python教程", "机器学习资料"],
             "sql": ["查询配置参数", "API接口限制", "系统设置", "数据库规则", "限制是多少", "参数配置"],

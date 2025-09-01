@@ -11,6 +11,9 @@ numpy>=1.24.0
 torch>=1.9.0
 transformers>=4.21.0
 
+# 重排序优化 (推荐)
+FlagEmbedding>=1.2.0  # BGE重排序模型
+
 # 可选依赖 (取消注释启用)
 # neo4j>=5.0.0        # 图数据库
 # redis>=4.0.0        # 缓存优化

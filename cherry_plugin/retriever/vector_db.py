@@ -9,20 +9,17 @@ import os
 
 class VectorDB:
     def __init__(self, model_name=None):
-        # 优先使用中文优化模型
+        # 优先使用中文优化模型（强制CPU）
+        device = 'cpu'  # 强制使用CPU
         if model_name is None:
             try:
-                self.model = SentenceTransformer("BAAI/bge-small-zh-v1.5")
-                self.dimension = 512
+                self.model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2", device=device)
+                self.dimension = 384
             except:
-                try:
-                    self.model = SentenceTransformer("shibing624/text2vec-base-chinese")
-                    self.dimension = 768
-                except:
-                    self.model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
-                    self.dimension = 384
+                self.model = SentenceTransformer("sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", device=device)
+                self.dimension = 384
         else:
-            self.model = SentenceTransformer(model_name)
+            self.model = SentenceTransformer(model_name, device=device)
             self.dimension = 384  # 默认维度
         
         self.index = None
@@ -49,7 +46,7 @@ class VectorDB:
         
         print(f"已添加 {len(docs)} 个文档，总计 {len(self.documents)} 个文档")
     
-    def search(self, query, k=5):
+    def search(self, query, k=5, use_rerank=True):
         """搜索相似文档"""
         if self.index is None or len(self.documents) == 0:
             return []
@@ -58,8 +55,9 @@ class VectorDB:
         query_embedding = self.model.encode([query])
         faiss.normalize_L2(query_embedding)
         
-        # 搜索
-        scores, indices = self.index.search(query_embedding.astype('float32'), min(k, len(self.documents)))
+        # 搜索更多候选用于重排序
+        search_k = min(k * 4, len(self.documents)) if use_rerank else min(k, len(self.documents))
+        scores, indices = self.index.search(query_embedding.astype('float32'), search_k)
         
         # 返回结果
         results = []
@@ -70,7 +68,13 @@ class VectorDB:
                     'score': float(score)
                 })
         
-        return results
+        # 重排序
+        if use_rerank and len(results) > k:
+            from .reranker import VectorReranker
+            reranker = VectorReranker(self.model)
+            results = reranker.rerank_vector_results(query, results, k)
+        
+        return results[:k]
     
     def save(self, path):
         """保存向量数据库"""
