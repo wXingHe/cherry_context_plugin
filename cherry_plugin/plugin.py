@@ -104,12 +104,31 @@ class CherryContextPlugin:
                 if retrieved:
                     self.cache.set(user_question, "graph", retrieved)
         
-        # 4. 构建最终prompt
+        # 4. 多模态融合与上下文压缩
+        from .optimization.multimodal_fusion import MultiModalFusion
+        from .optimization.context_compressor import ContextCompressor
+        
+        # 融合不同源的结果
+        fusion = MultiModalFusion()
+        vdb_items = retrieved if route == "vdb" else []
+        sql_items = retrieved if route == "sql" else []
+        graph_items = retrieved if route == "graph" else []
+        
+        fused_results = fusion.fuse_results(vdb_items, sql_items, graph_items, user_question)
+        
+        # 压缩上下文
+        compressor = ContextCompressor(max_tokens=1500)
+        compressed_results = compressor.compress_context(fused_results, user_question)
+        
+        # 5. 构建最终prompt
         final_prompt = self.prompt_template.generate_prompt(
-            user_question, short_term, retrieved, long_term, 
+            user_question, short_term, compressed_results, long_term, 
             template_type="with_memory" if short_term else "default"
         )
         final_prompt = self.prompt_template.optimize_prompt_length(final_prompt)
+        
+        # 更新retrieved为压缩后的结果
+        retrieved = compressed_results
         
         return {
             "route": route,
